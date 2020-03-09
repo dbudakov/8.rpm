@@ -7,4 +7,4 @@ Beginner
  [[EN]](https://blog.sleeplessbeastie.eu/2018/04/16/how-to-setup-private-docker-registry/)  
 
 Advanced
-1. RPM RHEL [[EN]](https://rpm-packaging-guide.github.io/)  
+1. RPM Packaging Guide [[EN]](https://rpm-packaging-guide.github.io/)    
