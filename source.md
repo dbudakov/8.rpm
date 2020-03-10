@@ -8,3 +8,4 @@ Beginner
 
 Advanced
 1. RPM Packaging Guide [[EN]](https://rpm-packaging-guide.github.io/)    
+2. Сборка nginx из исходных файлов [[RUS]](https://nginx.org/ru/docs/configure.html)  
