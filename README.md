@@ -82,7 +82,7 @@ curl -a http://localhost/repo/
 #### Тестируем репозиторий  
 Добавляем наш репозиторий в /etc/yum.repos.d
 ```
-cat >> /etc/yum.repos.d/otus.repo << EOF
+cat >> /etc/yum.repos.d/custom_rpm.repo << EOF
 [custom_rpm]
 name=custom_nginx
 baseurl=http://localhost/repo
