@@ -49,4 +49,33 @@ ll rpmbuild/RPMS/x86_64/
  ```
  mkdir /usr/share/nginx/html/repo
  ```
- 
+ Копируем туда наш собранныйы rpm пакет, дополнительно загрузим в каталог rpm для установки репозитория Percona-Server
+ ```
+ cp rpmbuild/RPMS/x86_64/nginx-1.14.1-1.el7_4.ngx.x86_64.rpm /usr/share/nginx/html/repo/
+ wget http://www.percona.com/downloads/percona-release/redhat/0.1-6/percona-release-0.1-6.noa rch.rpm -O /usr/share/nginx/html/repo/percona-release-0.1-6.noarch.rpm
+ ```
+ Инициализируем репозиторий
+ ```
+ createrepo /usr/share/nginx/html/repo/
+ ```
+ Настраиваем в NGINX доступ к листингу каталога
+ ```
+ vi /etc/nginx/conf.d/default.conf
+--------------------------------
+  location / {
+  root /usr/share/nginx/html;
+index index.html index.htm;
+autoindex on;                 # добавляем эту директиву
+}
+--------------------------------
+```
+Проверяем синтаксис и перезагружаем NGINX
+```
+nginx -t
+nginx -s reload
+```
+Репозиторий настроен, проверяем доступность через браузер или следующими командами
+```
+lynx http://localhost/repo/
+curl -a http://localhost/repo/
+```
