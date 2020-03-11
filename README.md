@@ -79,3 +79,29 @@ nginx -s reload
 lynx http://localhost/repo/
 curl -a http://localhost/repo/
 ```
+#### Тестируем репозиторий  
+Добавляем наш репозиторий в /etc/yum.repos.d
+```
+cat >> /etc/yum.repos.d/otus.repo << EOF
+[custom_rpm]
+name=custom_nginx
+baseurl=http://localhost/repo
+gpgcheck=0
+enabled=1
+EOF
+```
+Смотрим в списоке подключённых репозиториев, наш репозиторий и его содержимое 
+```
+yum repolist enabled | grep custom_rpm
+yum list | grep custom_rpm
+```
+установим пакет `percona-release`
+```
+yum install percona-release -y
+```
+Пакет установится с нашего репозитория  
+Для добавления пакетов на ресурс, необходимо после каждой актуализации файлов, обновить репозиторий следующей командой  
+```
+createrepo /usr/share/nginx/html/repo/
+```
+
