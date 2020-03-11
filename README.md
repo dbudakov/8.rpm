@@ -32,5 +32,15 @@ yum-builddep rpmbuild/SPECS/nginx.spec
 Осталось поправить `SPEC` образец [здесь](https://github.com/dbudakov/8.rpm/blob/master/SPECfile)
 ВАЖНО: Нужно обратить внимание на параметр `--with-openssl=/root/openssl-1.1.1a`, в котором путь указывается до каталога
 из-за различия в версиях пакета, каталог может отличаться, также можно переименовать каталог `/root/openssl-1.1.1*` в `/root/openssl-1.1.1a`
-сборка пройдёт успешно
+сборка пройдёт успешно. Другие опции для сборки NGINX можно посмотреть [здесь](https://nginx.org/ru/docs/configure.html)  
+Результат сборки пакетов нужно проверить в следующем каталоге:
+```
+ll rpmbuild/RPMS/x86_64/
+```
+Устанавливаем собранный NGINX, запускаем и проверяем его статус работы  
+```
+ yum localinstall -y rpmbuild/RPMS/x86_64/nginx-1.14.1-1.el7_4.ngx.x86_64.rpm
+ systemctl start nginx
+ systemctl status nginx
+```
  
