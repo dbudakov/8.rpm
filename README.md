@@ -43,4 +43,10 @@ ll rpmbuild/RPMS/x86_64/
  systemctl start nginx
  systemctl status nginx
 ```
+ ### Создать свой репозиторий и разместить там ранее собранный RPM
+ Для создания репозитория будем использовать выше установленный NGINX
+ для статики NGINX использует каталог `/usr/share/nginx/html`, создадим в нём каталог `repo`, для нашего репозитория  
+ ```
+ mkdir /usr/share/nginx/html/repo
+ ```
  
