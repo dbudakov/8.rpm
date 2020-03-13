@@ -1,0 +1,7 @@
+#/etc/yum.repos.d/custom_rpm.repo
+[custom_rpm]
+name=custom_nginx
+baseurl=http://localhost/repo
+gpgcheck=0
+enabled=1
+EOF
