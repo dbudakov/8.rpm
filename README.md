@@ -12,7 +12,7 @@ rpm-build \
 createrepo \
 yum-utils
 ```
-Теперь загрузим `SRPM` ПАКЕТ  `NGINX`
+Теперь загрузим `SRPM` пакет `NGINX`
 ```
 wget https://nginx.org/packages/centos/7/SRPMS/nginx-1.14.1-1.el7_4.ngx.src.rpm
 ```
