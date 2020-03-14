@@ -49,6 +49,7 @@
 	yum localinstall -y $src6
 	N=11; sed -e $N"s/^/autoindex on;\n/" -i $op6
 	nginx -s reload
+	systemctl start nginx
 	}
 
 	create_repo(){
