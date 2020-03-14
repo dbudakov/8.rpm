@@ -67,7 +67,7 @@
 		}		
 	}
 	
-	create_repo(){
+	attach_repo(){
 	#вставить файл /vagrant/custom.repo, ещё не создан 
 	#https://github.com/dbudakov/8.rpm/blob/master/homework/custom.repo	 
 	 src10=/vagrant/custom.repo 
