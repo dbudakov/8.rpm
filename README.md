@@ -53,21 +53,21 @@ SPEC для сборки с `nginx` c `openssl` [здесь](https://github.com/
 	sed -i 's/openssl-1.1.1a/'$i'/' /root/rpmbuild/SPECS/nginx.spec  # меняем значениe в файле на актуальную версию пакета
 	}                                                                
 
-	BUILD(){                                                     # сбор пакета
+	BUILD(){                              		# сбор пакета
 	 src5=/root/rpmbuild/SPECS/nginx.spec
 	 rpmbuild -bb $src5
 	}
 
-	install_custom_nginx(){                                      # установка и настройка собранного пакета
+	install_custom_nginx(){                         # установка и настройка собранного пакета
 	src6=/root/rpmbuild/RPMS/x86_64/nginx-1.14.1-1.el7_4.ngx.x86_64.rpm
 	op6=/etc/nginx/conf.d/default.conf
 	yum localinstall -y $src6
-	N=11; sed -e $N"s/^/autoindex on;\n/" -i $op6                # добавляем параметр "autoindex on" в конфиг nginx
-	nginx -s reload                                              # для листинга, перечитываем настройки и запускаем
+	N=11; sed -e $N"s/^/autoindex on;\n/" -i $op6   # добавляем параметр "autoindex on" в конфиг nginx
+	nginx -s reload                                 # для листинга, перечитываем настройки и запускаем
 	systemctl start nginx
 	}
 
-	create_repo(){                                               # создаем репозиторий и наполняем его файлами
+	create_repo(){                                  # создаем репозиторий и наполняем его файлами
 	src8=/root/rpmbuild/RPMS/x86_64/nginx-1.14.1-1.el7_4.ngx.x86_64.rpm 	
 	src9="http://www.percona.com/downloads/percona-release/redhat/0.1-6/percona-release-0.1-6.noarch.rpm"
 	op8=/usr/share/nginx/html/repo/
@@ -84,7 +84,7 @@ SPEC для сборки с `nginx` c `openssl` [здесь](https://github.com/
 	percn		
 	}
 	
-attach_repo(){                                               # добавление кастомного репозитория в список локальных репозиториев
+attach_repo(){                            # добавление кастомного репозитория в список локальных репозиториев
 op10=/etc/yum.repos.d/custom.repo
 cat > $op10 << EOF
 [custom]
@@ -95,12 +95,12 @@ enabled=1
 EOF
 }
 
-	chek_list(){                                         # сбор информации и проверка на работоспособность локального repo
+	chek_list(){                     # сбор информации и проверка на работоспособность локального repo
 	yum-config-manager --disable base >/dev/null
 	yum list | grep custom > /vagrant/result_repo.list
 	yum provides nginx >>/vagrant/result_repo.list
 	}
-MAIN(){                                                      # вызов функция по порядку
+MAIN(){                                  # вызов функция по порядку
 	INSTALL
 	NGX
 	OPENSSL
@@ -112,5 +112,5 @@ MAIN(){                                                      # вызов фун
 	attach_repo
 	chek_list
 }
-MAIN                                                         # вызов основной функции
+MAIN                                     # вызов основной функции
 ```
