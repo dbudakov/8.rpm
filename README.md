@@ -48,9 +48,9 @@ SPEC для сборки с `nginx` c `openssl` [здесь](https://github.com/
 	CP_SPEC(){                        # правка файла SPEC, для сборки с openssl
 	src5=/vagrant/SPECfile
 	op5=/root/rpmbuild/SPECS/nginx.spec
-	cp -f $src5 $op5                                                  
-	i=$(ls -l /root/|awk '/openssl/{print $9}')                      # так как в источнике использовался пакет версии 1.1.1a
-	sed -i 's/openssl-1.1.1a/'$i'/' /root/rpmbuild/SPECS/nginx.spec  # меняем значениe в файле на актуальную версию пакета
+	cp -f $src5 $op5                               # так как в источнике использовался пакет версии 1.1.1a                           
+	i=$(ls -l /root/|awk '/openssl/{print $9}')    # меняем значениe в файле на актуальную версию пакета                  
+	sed -i 's/openssl-1.1.1a/'$i'/' /root/rpmbuild/SPECS/nginx.spec  
 	}                                                                
 
 	BUILD(){                              		# сбор пакета
