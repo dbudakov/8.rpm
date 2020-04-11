@@ -28,7 +28,6 @@ Vagrant.configure ("2") do |config|
                 op10=/etc/yum.repos.d/custom.repo
         
                 yum install -y redhat-lsb-core gcc wget rpmdevtools rpm-build createrepo yum-utils
-#               yum install -y wget
                 wget $src0 -O $op0
                 rpm -i $op0
                 wget $src2 -O $op2
